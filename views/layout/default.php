@@ -8,12 +8,14 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
 
     <title>OLA</title>
 </head>
-<body class="container-flex d-flex flex-column min-vh-100 bg-light">
-<header class="text-bg-dark" data-bs-theme="dark">
-    <div class="container py-3">
+<body class="d-flex flex-column min-vh-100 bg-light">
+<header class="text-bg-dark fixed-top z-4" data-bs-theme="dark">
+    <div class="container-lg     py-3">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -28,9 +30,9 @@
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Pesquisar..." aria-label="Search">
             </form>
 
-            <div class="text-end">
+            <div class="text-end d-flex gap-2">
                 <?php if (isset($_SESSION['user'])): ?>
-                    <div class="btn-group">
+                    <div class="btn-group ">
                         <button type="button" class="btn btn-danger">Perfil</button>
                         <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
@@ -43,9 +45,9 @@
                             <li><a class="dropdown-item" href="#">Separated link</a></li>
                         </ul>
                     </div>
-                    <a href="index.php?c=auth&a=logout" class="btn btn-warning me-2">Logout</a>
+                    <a href="index.php?c=auth&a=logout" class="btn btn-warning">Logout</a>
                 <?php else: ?>
-                    <a href="index.php?c=auth&a=index" class="btn btn-outline-light me-2">Login</a>
+                    <a href="index.php?c=auth&a=index" class="btn btn-outline-light">Login</a>
                     <a href="index.php?c=auth&a=create" class="btn btn-warning">Sign-up</a>
                 <?php endif; ?>
 
@@ -54,10 +56,43 @@
     </div>
 </header>
 
-<main class="container">
+<main class="container-lg">
+
     <?php
-    require_once($viewPath);
+        require_once($viewPath);
     ?>
+    <?php if (isset($_SESSION['user'])): ?>
+        <div class="dropdown position-fixed bottom-0 end-0 mb-6 me-3 bd-mode-toggle">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center bg-warning" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (light)">
+                <span style="font-size: 1em; color: #000000;padding-right: 20px">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
+                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+                    Light
+                    <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+                    Dark
+                    <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+                    Auto
+                    <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <?php endif; ?>
 </main>
 <footer class="mt-auto px-5 pt-5 text-bg-dark" data-bs-theme="dark">
     <div class="row">

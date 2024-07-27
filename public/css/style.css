@@ -1,92 +1,55 @@
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-like:hover{
+    border-radius: 8px;
+    padding-left: 6px;
+    transition: all 2s;
+    background-color: #e6e6e6 !important;
+    opacity: 50;
+}
+.btn-like:hover span{
+}
+.btn-like{
+    border: none !important;
+    outline: none !important;
+}
+.btn-like span{
+    transform: scaleX(-1);
+}
+@media (min-width: 768px) {
+    main {
+        margin-top: 200px  !important;
+    }
+}
+@media (min-width: 992px) {
+    main {
+        margin-top: 130px  !important;
+    }
+}
+@media only screen and (min-width: 1200px) {
+  main {
+    margin-top: 100px !important;
+  }
+}
+main{
+    margin-top: 200px ;
 }
 
-.card {
-    width: 190px;
-    height: 254px;
-    background: #F4F6FB;
-    border: 1px solid white;
-    box-shadow: 10px 10px 64px 0px rgba(180, 180, 207, 0.75);
-    -webkit-box-shadow: 10px 10px 64px 0px rgba(186, 186, 202, 0.75);
-    -moz-box-shadow: 10px 10px 64px 0px rgba(208, 208, 231, 0.75);
+@media only screen and (min-width: 1200px) {
+    #rolante_left, #rolante_right{
+        position: sticky !important;
+        top: 100px !important;
+    }
+}
+#rolante_left, #rolante_right{
+    position: inherit;
+    top: 0;
+}
+.action{
+    cursor: pointer !important;
+}
+.action:hover{
+    background-color: #e6e6e6 !important;
+
+    opacity: 40;
 }
 
-.form {
-    padding: 25px;
-}
 
-.card_header {
-    display: flex;
-    align-items: center;
-}
-
-.card svg {
-    color: #7878bd;
-    margin-bottom: 20px;
-    margin-right: 5px;
-}
-
-.form_heading {
-    padding-bottom: 20px;
-    font-size: 21px;
-    color: #7878bd;
-}
-
-.field {
-    padding-bottom: 10px;
-}
-
-.input {
-    border-radius: 5px;
-    background-color: #e9e9f7;
-    padding: 5px;
-    width: 100%;
-    color: #7a7ab3;
-    border: 1px solid #dadaf7
-}
-
-.input:focus-visible {
-    outline: 1px solid #aeaed6;
-}
-
-.input::placeholder {
-    color: #bcbcdf;
-}
-
-label {
-    color: #B2BAC8;
-    font-size: 14px;
-    display: block;
-    padding-bottom: 4px;
-}
-
-button {
-    background-color: #7878bd;
-    margin-top: 10px;
-    font-size: 14px;
-    padding: 7px 12px;
-    height: auto;
-    font-weight: 500;
-    color: white;
-    border: none;
-}
-
-button:hover {
-    background-color: #5f5f9c;
-}
-table {
-    border-collapse: collapse;
-}
-td{
-    border: 1px solid;
-}
-th,.celula{
-    background-color: burlywood;
-    border: 1px solid;
-    font-weight: bold;
-    text-align: center;
-}
