@@ -4,7 +4,8 @@ class User extends \ActiveRecord\Model
     protected $password_confirmation;
 
     static $has_one = array(
-        array('perfil')
+        array('perfil'),
+        array('userImage'),
     );
 
     static $accessible = ['email', 'password']; // Não inclui password_confirmation

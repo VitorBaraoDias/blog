@@ -45,4 +45,41 @@ class PerfilController extends Controller
         }
         $this->errorView();
     }
+    public function upload($id)
+    {
+        $this->verifyId($id);
+        if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == 0) {
+            $upload_dir = 'public/uploads/';
+            $tmp_name = $_FILES['profile_image']['tmp_name'];
+            $file_ext = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
+            $file_name = time() . '.' . $file_ext; // Nome do arquivo com timestamp
+            $upload_file = $upload_dir . $file_name;
+
+            // Verifica se o diretório de upload existe, se não, cria-o
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0777, true);
+            }
+
+            if (move_uploaded_file($tmp_name, $upload_file)) {
+                // Atualiza a imagem de perfil do usuário no banco de dados
+
+                $userImage = UserImage::find_by_user_id($id);
+                if ($userImage) {
+                    $userImage->update_attributes(['path' => $upload_file, 'old_path' => $userImage->path]);
+                    //$userImage->path = $upload_file;
+                }else{
+                    $userImage = new UserImage(['user_id' => $id, 'path' => $upload_file]);
+                }
+                if ($userImage->is_valid()) {
+                    $userImage->save();
+                    $this->redirectToRoute('perfil', 'index');
+                }
+                // Redireciona para a página de perfil
+            } else {
+                die("Erro ao fazer upload do arquivo.");
+            }
+        } else {
+            $this->errorView();
+        }
+    }
 }

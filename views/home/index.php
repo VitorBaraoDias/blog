@@ -71,16 +71,17 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center gap-2">
-                    <?php if (is_null($user) || !$user->perfil): ?>
-                        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: cornflowerblue;"></i>
+                    <?php if (!is_null($user) && $user->userimage): ?>
+                        <img src="<?= $user->userimage->path ?>" class="rounded-circle" height="40" width="40">
                     <?php else: ?>
-                        <img src="public/img/foto1.jpg" class="rounded-circle" height="40" width="40">
-
+                        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: cornflowerblue;"></i>
                     <?php endif; ?>
 
                     <div class="input-group rounded-5 position-relative ">
                         <input class="form-control rounded-5 z-1" placeholder="Escreva uma nota rápida">
-                        <a href="index.php?c=post&a=create" class="input-group-text rounded-5 position-absolute end-0 z-2"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="index.php?c=post&a=create" class="input-group-text rounded-5 position-absolute end-0 z-2">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
                     </div>
                 </div>
             </div>

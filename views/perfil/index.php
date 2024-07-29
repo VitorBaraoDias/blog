@@ -2,10 +2,14 @@
     <div class="card-body row" style="min-height: 500px">
         <div class="col">
             <div class=" d-flex justify-content-center">
-                <form>
+                <form id="profile-form" action="index.php?c=perfil&a=upload&id=<?= $user->id ?>" method="post" enctype="multipart/form-data">
                     <label for="file-input" style="cursor: pointer;">
                         <figure id="figure_perfil_img" class="figure position-relative d-inline-block">
-                            <img src="public/img/foto1.jpg" class="rounded-circle" alt="Profile Image" style="width: 140px; height: 140px;">
+                            <?php if ($user->userimage && $user->userimage->path): ?>
+                                <img src="<?=$user->userimage->path  ?>" class="rounded-circle" alt="Profile Image" style="width: 140px; height: 140px;">
+                            <?php else: ?>
+                                <img src="public/img/profile.png" class="rounded-circle" alt="Profile Image" style="width: 140px; height: 140px;">
+                            <?php endif; ?>
                             <span class="position-absolute end-0 bg-white rounded-circle p-2" style="margin-right: 7px; bottom: -5px !important;">
                                 <i class="bi bi-arrow-up-left-circle-fill text-primary" style="font-size: 1.4rem"></i>
                             </span>
@@ -114,6 +118,8 @@
                 document.querySelector('#figure_perfil_img img').src = e.target.result;
             };
             reader.readAsDataURL(file);
+            document.getElementById('profile-form').submit();
+
         }
     });
 </script>

@@ -27,7 +27,7 @@ class Controller
         }
     }
     protected function verifyId($id_user){
-        if($id_user !== Auth::get_session()){
+        if($id_user != Auth::get_session()){
             $this->errorView();
         }
     }

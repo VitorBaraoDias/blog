@@ -20,5 +20,7 @@ return [
         'index' => ['GET', 'PerfilController', 'index'],
         'store' => ['POST', 'PerfilController', 'store'],
         'update' => ['POST', 'PerfilController', 'update'],
+        'upload' => ['POST', 'PerfilController', 'upload'],
+
     ],
 ];
