@@ -38,11 +38,11 @@
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="index.php?c=perfil&a=index">Ver Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Escrever</a></li>
+                            <li><a class="dropdown-item" href="#">Guardados</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" href="#">Definições</a></li>
                         </ul>
                     </div>
                     <a href="index.php?c=auth&a=logout" class="btn btn-warning">Logout</a>
@@ -61,38 +61,15 @@
     <?php
         require_once($viewPath);
     ?>
-    <?php if (isset($_SESSION['user'])): ?>
-        <div class="dropdown position-fixed bottom-0 end-0 mb-6 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center bg-warning" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (light)">
-                <span style="font-size: 1em; color: #000000;padding-right: 20px">
-                    <i class="fa-solid fa-pen-nib"></i>
-                </span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
-                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-                    Light
-                    <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-                    Dark
-                    <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
-                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                    Auto
-                    <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                </button>
-            </li>
-        </ul>
-    </div>
-    <?php endif; ?>
+<!--    --><?php //if (isset($_SESSION['user_controllers'])): ?>
+<!--        <div class="bd-mode-toggle sticky-top end-0 float-end py-4 animation-bounce" style="bottom: 30px; right: 20px;">-->
+<!--            <button class="btn btn-bd-primary py-2 d-flex align-items-center bg-warning" id="bd-theme" type="button" aria-expanded="false">-->
+<!--                    <span style="font-size: 1em; color: #000000;padding-right: 10px">-->
+<!--                        <i class="fa-solid fa-pen-nib"></i>-->
+<!--                    </span>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    --><?php //endif; ?>
 </main>
 <footer class="mt-auto px-5 pt-5 text-bg-dark" data-bs-theme="dark">
     <div class="row">

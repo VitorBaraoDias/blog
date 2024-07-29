@@ -5,10 +5,15 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $auth = new Auth();
+        Auth::startSession();
     }
     public function index(){
-        $this->renderView('home', 'index');
+        $user = null;
+        if (Auth::isAuthenticated()) {
+            $userId = Auth::get_session();
+            $user = User::find($userId); // Obtém o usuário logado pelo ID
+        }
+        $this->renderView('home', 'index', ['user' => $user]);
     }
     public function create(){
         $this->renderView('home', 'create',['nota' => 1]);

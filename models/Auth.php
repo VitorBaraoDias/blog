@@ -1,9 +1,11 @@
 <?php
 class Auth
 {
-    public function __construct()
+    public static function startSession()
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
     public static function authenticate($email, $password)
@@ -11,20 +13,29 @@ class Auth
         $authenticated = false;
         $user = User::find_by_email($email);
         if ($user && $user->verify_password($password)) {
+            self::startSession();
             $_SESSION['user'] = $user->id;
             $authenticated = true;
         }
         return $authenticated;
     }
-    public function create_session($user){
+    public static function create_session($user){
+        self::startSession();
         $_SESSION['user'] = $user->id;
     }
-    public function IsLoggedIn()
+    public static function isAuthenticated()
     {
+        self::startSession();
         return isset($_SESSION['user']);
     }
-    public function Logout()
+    public static function get_session(){
+        self::startSession();
+        return $_SESSION['user'];
+    }
+
+    public static function Logout()
     {
+        self::startSession();
         session_destroy();
     }
 }

@@ -1,12 +1,5 @@
 {
     "require": {
         "php-activerecord/php-activerecord": "^1.2"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/",
-            "Models\\": "models/",
-            "Controllers\\": "controllers/"
-        }
     }
 }

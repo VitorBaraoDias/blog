@@ -1,6 +1,7 @@
 <?php
 require_once 'controllers/AuthController.php';
 require_once 'controllers/HomeController.php';
+require_once 'controllers/usercontrollers/PerfilController.php';
 
 
 return [
@@ -14,6 +15,10 @@ return [
         'store' => ['POST', 'AuthController', 'store'],
         'login' => ['POST', 'AuthController', 'login'],
         'logout' => ['GET', 'AuthController', 'logout'],
-
+    ],
+    'perfil' => [
+        'index' => ['GET', 'PerfilController', 'index'],
+        'store' => ['POST', 'PerfilController', 'store'],
+        'update' => ['POST', 'PerfilController', 'update'],
     ],
 ];

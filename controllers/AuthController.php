@@ -14,9 +14,8 @@ class AuthController extends Controller
         $user = new User($this->getHTTPPost());
         if ($user->is_valid()) {
             $user->save();
-
-            $auth = new Auth();
-            $auth->create_session($user);
+            //$auth = new Auth();
+            Auth::create_session($user);
             $this->redirectToRoute('home', "index");
         } else {
             $this->renderView("auth", 'create', ['user' => $user]);
@@ -26,8 +25,8 @@ class AuthController extends Controller
 
         $email = $this->getHTTPPostParam('email');
         $password = $this->getHTTPPostParam('password');
-        $auth = new Auth();
-        if ($auth->authenticate($email, $password)) {
+        //$auth = new Auth();
+        if (Auth::authenticate($email, $password)) {
             $this->redirectToRoute('home', 'index');
         } else {
             $errors = ['email' => 'Invalid email or password'];
@@ -35,8 +34,8 @@ class AuthController extends Controller
         }
     }
     public function logout(){
-        $auth = new Auth();
-        $auth->Logout();
+        //$auth = new Auth();
+        Auth::Logout();
         $this->redirectToRoute('home', "index");
     }
 }

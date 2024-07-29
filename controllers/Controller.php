@@ -20,12 +20,19 @@ class Controller
         $layoutPath = 'views/layout/' . $layout . '.php';
         require_once($layoutPath);
     }
-
     protected function authenticationFilter(){
-        $auth = new Auth();
-        if(!$auth->IsLoggedIn()){
-            $this->redirectToRoute('auth','index');
+        //$auth = new Auth();
+        if(!Auth::isAuthenticated()){
+            $this->errorView();
         }
+    }
+    protected function verifyId($id_user){
+        if($id_user !== Auth::get_session()){
+            $this->errorView();
+        }
+    }
+    protected function errorView(){
+        $this->renderView('error','404');
     }
     protected function getHTTPPostParam($key) {
         return isset($_POST[$key]) ? $_POST[$key] : '';

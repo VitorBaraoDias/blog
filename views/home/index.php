@@ -1,50 +1,66 @@
+<?php if (!is_null($user) && !$user->perfil): ?>
+    <div id="liveToast" class="animation-bounce toast align-items-center bg-warning border-0 text-dark position-fixed "
+         style="right: 35px;bottom: 30px; z-index: 9999" role="alert" aria-live="assertive" aria-atomic="true"
+         data-bs-delay="60000">
+        <div class="d-flex  sticky-top">
+            <div class="toast-body">
+                Olá, preencha o seu perfil para ter mais funcionalidades!
+            </div>
+            <button type="button" class="btn-close btn-close-dark me-3 m-auto pe-2" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+        </div>
+    </div>
+<?php endif; ?>
+
 <div class="position-relative row mt-4 ">
     <div class="col-12 col-md-12 col-lg-3 col-xl-3 mb-4 fs-6 order-1">
         <div id="rolante_left" class=" d-flex flex-column">
             <div class="card">
                 <div class="card-body">
 
-                <h2>Categorias</h2>
+                    <h2>Categorias</h2>
                     <hr class="d-none d-md-block">
 
                     <ul class="list-group">
-                    <li class="list-group-item d-flex gap-4 justify-content-between bg-warning list-group-item-action"
-                        aria-current="true">
-                        <div>
+                        <li class="list-group-item d-flex gap-4 justify-content-between bg-warning list-group-item-action"
+                            aria-current="true">
+                            <div>
                  <span style="font-size: 1em; color: #282726;padding-right: 20px">
                    <i class="fa-solid fa-house"></i>
                  </span>
-                            <span>Home</span>
-                        </div>
-                        <span class="align-self-end" style="font-size: 1em; color: #7b7a7a;">
+                                <span>Home</span>
+                            </div>
+                            <span class="align-self-end" style="font-size: 1em; color: #7b7a7a;">
                 <i class="fa-solid fa-arrow-right"></i>
              </span>
-                    </li>
+                        </li>
 
-                    <li class="list-group-item d-flex gap-4 justify-content-between list-group-item-action" aria-current="true">
-                        <div>
+                        <li class="list-group-item d-flex gap-4 justify-content-between list-group-item-action"
+                            aria-current="true">
+                            <div>
                  <span style="font-size: 1em; color: #282726;padding-right: 20px">
                     <i class="fa-solid fa-code"></i>
                  </span>
-                            Programação
-                        </div>
-                        <span class="align-self-end" style="font-size: 1em; color: #7b7a7a;">
+                                Programação
+                            </div>
+                            <span class="align-self-end" style="font-size: 1em; color: #7b7a7a;">
                 <i class="fa-solid fa-arrow-right"></i>
              </span>
-                    </li>
+                        </li>
 
-                    <li class="list-group-item d-flex gap-4 justify-content-between list-group-item-action" aria-current="true">
-                        <div>
+                        <li class="list-group-item d-flex gap-4 justify-content-between list-group-item-action"
+                            aria-current="true">
+                            <div>
                  <span style="font-size: 1em; color: #282726;padding-right: 20px">
                     <i class="fa-solid fa-comment"></i>
                  </span>
-                            Debate
-                        </div>
-                        <span class="align-self-end" style="font-size: 1em; color: #7b7a7a;">
+                                Debate
+                            </div>
+                            <span class="align-self-end" style="font-size: 1em; color: #7b7a7a;">
                     <i class="fa-solid fa-arrow-right"></i>
                 </span>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
 
                 </div>
 
@@ -55,10 +71,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center gap-2">
-                    <img src="public/img/foto1.jpg" class="rounded-circle" height="40" width="40">
+                    <?php if (is_null($user) || !$user->perfil): ?>
+                        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: cornflowerblue;"></i>
+                    <?php else: ?>
+                        <img src="public/img/foto1.jpg" class="rounded-circle" height="40" width="40">
+
+                    <?php endif; ?>
+
                     <div class="input-group rounded-5 position-relative ">
                         <input class="form-control rounded-5 z-1" placeholder="Escreva uma nota rápida">
-                        <button class="input-group-text rounded-5 position-absolute end-0 z-2"><i class="bi bi-pencil-fill"></i></button>
+                        <a href="index.php?c=post&a=create" class="input-group-text rounded-5 position-absolute end-0 z-2"><i class="bi bi-pencil-fill"></i></a>
                     </div>
                 </div>
             </div>
@@ -84,7 +106,7 @@
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.</p>
                     </div>
-                    <img class="img-fluid border-bottom" src="public/img/foto1.jpg"  alt="...">
+                    <img class="img-fluid border-bottom" src="public/img/foto1.jpg" alt="...">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="text-secondary" style="font-size: 0.8rem">8 likes</span>
@@ -93,16 +115,16 @@
                         </div>
                         <hr class="d-none d-md-block">
                         <div class="d-flex justify-content-around align-items-center">
-                                <button class="ps-0 d-flex align-items-center bg-transparent btn-like">
+                            <button class="ps-0 d-flex align-items-center bg-transparent btn-like">
                                      <span style="font-size: 1.7em; color: #282726;padding-right: 5px;  padding-left: 10px;">
                                         <i class="fa-regular fa-thumbs-up"></i>
                                      </span>
-                                    <h4 class="fs-6 mb-0">gostei</h4>
-                                </button>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Comentar</button>
-                                </div>
+                                <h4 class="fs-6 mb-0">gostei</h4>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Comentar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +144,7 @@
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.</p>
                     </div>
-<!--                    <img class=" img-fluid border-bottom" src="public/img/foto1.jpg"  alt="...">-->
+                    <!--                    <img class=" img-fluid border-bottom" src="public/img/foto1.jpg"  alt="...">-->
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="text-secondary" style="font-size: 0.8rem">8 likes</span>
@@ -198,27 +220,43 @@
                     <hr class="d-none d-md-block" style="margin-bottom: 0px;">
                 </div>
                 <div class="d-flex flex-column action card-body">
-                        <span class="" style="font-size: 0.7rem; font-weight: 500; color: black">Mafra é atacada</span>
-                        <span class="" style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
+                    <span class="" style="font-size: 0.7rem; font-weight: 500; color: black">Mafra é atacada</span>
+                    <span class=""
+                          style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
                 </div>
                 <div class="d-flex flex-column action card-body">
                     <span class="" style="font-size: 0.7rem; font-weight: 500; color: black">Mafra é atacada</span>
-                    <span class="" style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
+                    <span class=""
+                          style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
                 </div>
                 <div class="d-flex flex-column action card-body">
                     <span class="" style="font-size: 0.7rem; font-weight: 500; color: black">Mafra é atacada</span>
-                    <span class="" style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
+                    <span class=""
+                          style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
                 </div>
                 <div class="d-flex flex-column action card-body">
                     <span class="" style="font-size: 0.7rem; font-weight: 500; color: black">Mafra é atacada</span>
-                    <span class="" style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
+                    <span class=""
+                          style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
                 </div>
                 <div class="d-flex flex-column action card-body">
                     <span class="" style="font-size: 0.7rem; font-weight: 500; color: black">Mafra é atacada</span>
-                    <span class="" style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
+                    <span class=""
+                          style="font-size: 0.7rem; font-weight: 300; color: #7b7a7a">há 1 hora • 17 1414 likes</span>
                 </div>
                 <img src="public/img/foto2.png" class="img-fluid" height="300">
             </div>
         </div>
     </div hei>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var toastEl = document.getElementById('liveToast');
+        var toast = new bootstrap.Toast(toastEl, {
+            autohide: true,
+            delay: 10000 // tempo em milissegundos (5 segundos)
+
+        });
+        toast.show();
+    });
+</script>

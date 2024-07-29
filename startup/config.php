@@ -11,4 +11,6 @@ ActiveRecord\Config::initialize(function($cfg)
             'development' => 'mysql://root:root@localhost/blog',
         )
     );
+    ActiveRecord\Connection::$datetime_format = 'Y-m-d H:i:s';
+    ActiveRecord\DateTime::$DEFAULT_FORMAT = 'db';
 });

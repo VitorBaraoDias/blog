@@ -3,6 +3,10 @@ class User extends \ActiveRecord\Model
 {
     protected $password_confirmation;
 
+    static $has_one = array(
+        array('perfil')
+    );
+
     static $accessible = ['email', 'password']; // Não inclui password_confirmation
 
 // Atributos acessíveis para mass assignment
